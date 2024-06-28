@@ -1,9 +1,8 @@
 // src/components/AudioPlayer.js
 import React, { useState, useRef } from 'react';
 
-const AudioPlayer = ({ categories, audioFiles }) => {
+const AudioPlayer = ({ audioFiles }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const audioRef = useRef(null);
 
   const handlePlay = (url) => {
@@ -15,31 +14,10 @@ const AudioPlayer = ({ categories, audioFiles }) => {
     audioRef.current.play();
   };
 
-  const filteredFiles = audioFiles.filter(file => file.category === selectedCategory);
-
   return (
     <div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '20px' }}>
-        {categories.map((category, index) => (
-          <button
-            key={index}
-            onClick={() => setSelectedCategory(category)}
-            style={{
-              margin: '10px',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              backgroundColor: selectedCategory === category ? 'blue' : 'grey',
-              color: 'white',
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {filteredFiles.map((file, index) => (
+        {audioFiles.map((file, index) => (
           <button
             key={index}
             onClick={() => handlePlay(file.url)}
