@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 
 const AudioPlayer = ({ audioFiles }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const audioRef = useRef(null);
 
   const handlePlay = (url) => {
@@ -14,10 +15,35 @@ const AudioPlayer = ({ audioFiles }) => {
     audioRef.current.play();
   };
 
+  const categories = [...new Set(audioFiles.map(file => file.category))];
+
+  const filteredFiles = selectedCategory
+    ? audioFiles.filter(file => file.category === selectedCategory)
+    : audioFiles;
+
   return (
     <div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '20px' }}>
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            onClick={() => setSelectedCategory(category)}
+            style={{
+              margin: '10px',
+              padding: '10px 20px',
+              borderRadius: '5px',
+              backgroundColor: selectedCategory === category ? 'blue' : 'grey',
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {audioFiles.map((file, index) => (
+        {filteredFiles.map((file, index) => (
           <button
             key={index}
             onClick={() => handlePlay(file.url)}
