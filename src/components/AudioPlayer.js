@@ -29,8 +29,8 @@ const AudioPlayer = ({ audioFiles }) => {
               color: 'white',
               border: 'none',
               cursor: 'pointer',
-              flex: '1 1 calc(50% - 20px)', // 让按钮占据50%的宽度，减去间距
-              maxWidth: 'calc(50% - 20px)', // 最大宽度为50%，减去间距
+              flex: '1 1 calc(20% - 20px)', // 让按钮占据50%的宽度，减去间距
+              maxWidth: 'calc(20% - 20px)', // 最大宽度为50%，减去间距
             }}
           >
             {file.label}
