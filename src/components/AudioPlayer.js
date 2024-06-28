@@ -37,6 +37,11 @@ const AudioPlayer = ({ audioFiles }) => {
           </button>
         ))}
       </div>
+      <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: 'rgba(0, 0, 0, 0.5)', padding: '10px', textAlign: 'center' }}>
+        <audio ref={audioRef} controls style={{ width: '100%' }}>
+          Your browser does not support the audio element.
+        </audio>
+      </div>
     </div>
   );
 };
