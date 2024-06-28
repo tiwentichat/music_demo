@@ -45,16 +45,27 @@ const AudioPlayer = ({ audioFiles }) => {
               margin: '10px',
               padding: '10px 20px',
               borderRadius: '5px',
-              backgroundColor: currentAudio === file.url ? 'darkred' : 'lightgrey',
-              color: 'black',
+              backgroundColor: currentAudio === file.url ? '#8B0000' : '#F0F0F0',
+              color: currentAudio === file.url ? 'white' : 'black',
               border: 'none',
               cursor: 'pointer',
               flex: '1 1 calc(20% - 20px)',
               maxWidth: 'calc(20% - 20px)',
-              transition: 'background-color 0.3s',
+              transition: 'background-color 0.3s, box-shadow 0.3s',
+              boxShadow: currentAudio === file.url ? '0 4px 8px rgba(0, 0, 0, 0.3)' : '0 2px 4px rgba(0, 0, 0, 0.1)',
             }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'lightcoral'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = currentAudio === file.url ? 'darkred' : 'lightgrey'}
+            onMouseEnter={(e) => {
+              if (currentAudio !== file.url) {
+                e.target.style.backgroundColor = '#FF6347';
+                e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (currentAudio !== file.url) {
+                e.target.style.backgroundColor = '#F0F0F0';
+                e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+              }
+            }}
           >
             {file.label}
           </button>
