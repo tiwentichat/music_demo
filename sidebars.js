@@ -4,7 +4,6 @@ module.exports = {
 'index',
 
 'guide',
-'health-and-safety',
  
  
   ],
