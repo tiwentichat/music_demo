@@ -1,0 +1,118 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #5ece71;
+  --ifm-color-primary-dark: #349b50;
+  --ifm-color-primary-darker: #31924c;
+  --ifm-color-primary-darkest: #29783e;
+  --ifm-color-primary-light: #40bd62;
+  --ifm-color-primary-lighter: #47c168;
+  --ifm-color-primary-lightest: #61ca7e;
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+figure {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+.video-container {
+  height: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  position: relative;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glossary-anchor {
+  scroll-margin-top: var(--ifm-navbar-height);
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.footer__logo {
+  width:10rem;
+}
+
+.icon-button {
+  transition: 0.5s;
+}
+
+.icon-button:hover {
+  color: #888;
+}
+
+.markdown img {
+  display: block;
+  margin-left: 12;
+  max-width: 50%;
+  height: auto;
+}
+
+
+/* 按钮基本样式 */
+.button-audio {
+  padding: 8px 20px; /* 根据需要调整内边距 */
+  font-size: 16px;
+  margin: 5px; /* 外边距，根据需要调整 */
+  width: 100%; /* 设置宽度为100%，或根据需要调整 */
+  height: 50px; /* 设置高度为50px，或根据需要调整 */
+  border-radius: 5px; /* 设置圆角 */
+  border: 1px solid #ccc; /* 边框颜色 */
+  background-color: #eee; /* 背景颜色 */
+  color: black; /* 文字颜色 */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s; /* 平滑过渡效果 */
+  display: inline-block; /* 使按钮水平排列 */
+}
+
+/* 鼠标悬浮状态 */
+.button-audio:hover {
+  background-color: #d0e0f0; /* 浅蓝色背景 */
+  border-color: #a0c0d0; /* 边框颜色 */
+}
+
+/* 按钮被激活状态（伪类:active） */
+.button-audio:active {
+  background-color: #007bff; /* 深蓝色背景 */
+  border-color: #0056b3; /* 边框颜色 */
+}
+
+/* 响应式设计：当屏幕变窄时，按钮垂直排列 */
+@media (max-width: 768px) {
+  .button-audio {
+    display: block; /* 使按钮垂直排列 */
+    margin: 5px auto; /* 居中显示 */
+  }
+}
+
+
+
