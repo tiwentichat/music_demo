@@ -11,7 +11,6 @@ import AudioPlayer from '@site/src/components/AudioPlayer';
 ## 第一类
 
 <AudioPlayer
-  category="Category 1"
   audioFiles={[
     { label: "Audio 1", url: "https://cdn1.suno.ai/f76f6f84-45b2-4e26-b084-71e47f9a104a.mp3" },
     { label: 'Audio 2', url: 'https://cdn.example.com/audio2.mp3' },
@@ -29,7 +28,6 @@ import AudioPlayer from '@site/src/components/AudioPlayer';
 ## 第二类
 
 <AudioPlayer
-  category="Category 2"
   audioFiles={[
     { label: "Audio 11", url: "https://cdn1.suno.ai/f76f6f84-45b2-4e26-b084-71e47f9a104a.mp3" },
     { label: 'Audio 12', url: 'https://cdn.example.com/audio2.mp3' },
