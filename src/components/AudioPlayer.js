@@ -1,9 +1,9 @@
 // src/components/AudioPlayer.js
 import React, { useState, useRef } from 'react';
 
-const AudioPlayer = ({ audioFiles }) => {
+const AudioPlayer = ({ categories, audioFiles }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const audioRef = useRef(null);
 
   const handlePlay = (url) => {
@@ -15,11 +15,7 @@ const AudioPlayer = ({ audioFiles }) => {
     audioRef.current.play();
   };
 
-  const categories = [...new Set(audioFiles.map(file => file.category))];
-
-  const filteredFiles = selectedCategory
-    ? audioFiles.filter(file => file.category === selectedCategory)
-    : audioFiles;
+  const filteredFiles = audioFiles.filter(file => file.category === selectedCategory);
 
   return (
     <div>
