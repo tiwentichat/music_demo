@@ -1,19 +1,19 @@
 module.exports = {
-  title: 'Guide.TripinChina.Help',
+  title: 'Sunodemo.GowithAI.Help',
   tagline: 'Developing with Docusaurs',
-  url: 'https://tripinChina.Help',
+  url: 'https://Sunodemo.GowithAI.Help',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
-  organizationName: 'tripinChina.Help',
-  projectName: 'Guide.TripinChina.Help',
+  organizationName: 'Sunodemo.GowithAI.Help',
+  projectName: 'Sunodemo.GowithAI.Help',
   onBrokenLinks: 'ignore',
 
   trailingSlash: true,
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en','zh-Hans', 'fr', 'ru', 'ko'],
+    defaultLocale: 'zh-Hans',
+    locales: ['en','zh-Hans'],
 
 
   localeConfigs: {
@@ -38,7 +38,7 @@ module.exports = {
 
     
     navbar: {
-      title: 'Guide.TripinChina.Help',
+      title: 'Sunodemo.GowithAI.Help',
       logo: {
         alt: 'TripinChina.Help Logo',
         src: 'img/logo.svg',
@@ -47,7 +47,7 @@ module.exports = {
         
         {
           href: 'https://sunotag.gowithai.help',
-          label: '标签选择器',
+          label: 'Suno-Tag-Selector | 标签选择器',
           position: 'left',
         },
        
