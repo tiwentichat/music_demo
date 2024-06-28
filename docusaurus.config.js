@@ -46,8 +46,8 @@ module.exports = {
       items: [
         
         {
-          href: 'https://tripinChina.Help',
-          label: 'Cover Page',
+          href: 'https://sunotag.gowithai.help',
+          label: '标签选择器',
           position: 'left',
         },
        

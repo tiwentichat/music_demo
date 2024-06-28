@@ -6,7 +6,7 @@ slug: /
 
 import AudioPlayer from '@site/src/components/AudioPlayer';
 
-
+本页面为Suno样本音乐示例
 
 ## 数字类
 
