@@ -8,11 +8,8 @@ import AudioPlayer from '@site/src/components/AudioPlayer';
 
 本页面为Suno样本音乐示例，更多标签选择请移步：https://sunotag.gowithai.help
 
-
-
-
-
-## 数字类
+### 用法
+先选类型，比如 数字 ， 再选具体音乐。
 
 <AudioPlayer  
   categories={["数字", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "R", "S", "T", "U"]}
