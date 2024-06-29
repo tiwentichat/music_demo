@@ -1,6 +1,5 @@
 ---
 id: index
-title: Home Page
 slug: /
 ---
 
