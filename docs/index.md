@@ -1,5 +1,6 @@
 ---
 id: index
+title: 首页
 slug: /
 ---
 

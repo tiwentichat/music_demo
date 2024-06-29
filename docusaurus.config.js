@@ -12,7 +12,7 @@ module.exports = {
 
   trailingSlash: true,
   i18n: {
-    defaultLocale: 'zh-Hans',
+    defaultLocale: 'zh',
     locales: ['en','zh-Hans'],
 
 
