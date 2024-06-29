@@ -25,6 +25,11 @@ const AudioPlayer = ({ categories, audioFiles }) => {
 
   return (
     <div>
+      <div style={{ marginTop: '20px' }}>
+        <audio ref={audioRef} style={{ width: '100%' }}>
+          Your browser does not support the audio element.
+        </audio>
+      </div>
       {categories && (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', marginBottom: '20px' }}>
           {categories.map((category, index) => (
@@ -82,11 +87,6 @@ const AudioPlayer = ({ categories, audioFiles }) => {
             {file.label}
           </button>
         ))}
-      </div>
-      <div style={{ marginTop: '20px' }}>
-        <audio ref={audioRef} style={{ width: '100%' }}>
-          Your browser does not support the audio element.
-        </audio>
       </div>
     </div>
   );
