@@ -44,10 +44,7 @@ const AudioPlayer = ({ categories, audioFiles }) => {
           {categories.map((category, index) => (
             <button
               key={index}
-              onClick={() => {
-                setSelectedCategory(category);
-                handleCopy(category);
-              }}
+              onClick={() => setSelectedCategory(category)}
               style={{
                 margin: '10px',
                 padding: '10px 20px',
@@ -76,7 +73,10 @@ const AudioPlayer = ({ categories, audioFiles }) => {
         {filteredFiles.map((file, index) => (
           <button
             key={index}
-            onClick={() => handlePlay(file.url)}
+            onClick={() => {
+              handlePlay(file.url);
+              handleCopy(file.label);
+            }}
             style={{
               margin: '10px',
               padding: '10px 20px',
