@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 const AudioPlayer = ({ categories, audioFiles }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(categories ? categories[0] : null);
+  const [copySuccess, setCopySuccess] = useState(false);
   const audioRef = useRef(null);
 
   const handlePlay = (url) => {
@@ -13,6 +14,13 @@ const AudioPlayer = ({ categories, audioFiles }) => {
     setCurrentAudio(url);
     audioRef.current.src = url;
     audioRef.current.play();
+  };
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    });
   };
 
   const filteredFiles = categories ? audioFiles.filter(file => file.category === selectedCategory) : audioFiles;
@@ -36,7 +44,10 @@ const AudioPlayer = ({ categories, audioFiles }) => {
           {categories.map((category, index) => (
             <button
               key={index}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                handleCopy(category);
+              }}
               style={{
                 margin: '10px',
                 padding: '10px 20px',
@@ -89,6 +100,11 @@ const AudioPlayer = ({ categories, audioFiles }) => {
           </button>
         ))}
       </div>
+      {copySuccess && (
+        <div style={{ position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', padding: '10px 20px', borderRadius: '5px' }}>
+          音乐标签已复制
+        </div>
+      )}
     </div>
   );
 };
