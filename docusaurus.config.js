@@ -50,6 +50,11 @@ module.exports = {
           label: 'Suno-Tag-Selector | 标签选择器',
           position: 'left',
         },
+        {
+          href: 'https://gowithai.help',
+          label: 'GowithAI',
+          position: 'left',
+        },
        
         {
             type: 'localeDropdown',
