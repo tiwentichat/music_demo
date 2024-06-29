@@ -18,15 +18,16 @@ const AudioPlayer = ({ categories, audioFiles }) => {
   const filteredFiles = categories ? audioFiles.filter(file => file.category === selectedCategory) : audioFiles;
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.controls = false; // 隐藏控制条
-    }
+    // 移除或注释掉这一行以显示音频进度条
+    // if (audioRef.current) {
+    //   audioRef.current.controls = false; // 隐藏控制条
+    // }
   }, []);
 
   return (
     <div>
       <div style={{ marginTop: '20px' }}>
-        <audio ref={audioRef} style={{ width: '100%' }}>
+        <audio ref={audioRef} controls style={{ width: '100%' }}>
           Your browser does not support the audio element.
         </audio>
       </div>
