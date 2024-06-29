@@ -1,78 +1,90 @@
-import React, { useState, useRef } from 'react';
+// src/components/AudioPlayer.js
+import React, { useState, useRef, useEffect } from 'react';
 
-const AudioPlayer = ({ audioFiles }) => {
+const AudioPlayer = ({ categories, audioFiles }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(categories ? categories[0] : null);
   const audioRef = useRef(null);
 
-  const handlePlay = (url, label) => {
+  const handlePlay = (url) => {
     if (currentAudio) {
       audioRef.current.pause();
     }
     setCurrentAudio(url);
     audioRef.current.src = url;
     audioRef.current.play();
-
-    // 复制标签内容
-    navigator.clipboard.writeText(label).then(() => {
-      // 显示提示
-      const alert = document.createElement('div');
-      alert.textContent = '标签内容已经复制';
-      alert.style.position = 'fixed';
-      alert.style.bottom = '20px';
-      alert.style.left = '50%';
-      alert.style.transform = 'translateX(-50%)';
-      alert.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      alert.style.color = 'white';
-      alert.style.padding = '10px 20px';
-      alert.style.borderRadius = '5px';
-      alert.style.zIndex = '1000';
-      document.body.appendChild(alert);
-
-      setTimeout(() => {
-        document.body.removeChild(alert);
-      }, 2000);
-    });
   };
+
+  const filteredFiles = categories ? audioFiles.filter(file => file.category === selectedCategory) : audioFiles;
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.controls = false; // 隐藏控制条
+    }
+  }, []);
 
   return (
     <div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {audioFiles.map((file, index) => (
+      {categories && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', marginBottom: '20px' }}>
+          {categories.map((category, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedCategory(category)}
+              style={{
+                margin: '10px',
+                padding: '10px 20px',
+                borderRadius: '0px', // 更直角一些
+                backgroundColor: selectedCategory === category ? 'rgb(193, 44, 31)' : 'rgb(239, 239, 239)',
+                color: selectedCategory === category ? 'white' : 'black',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                transition: 'background-color 0.3s, transform 0.3s',
+                transform: selectedCategory === category ? 'scale(1.05)' : 'scale(1)',
+                whiteSpace: 'nowrap', // 防止文字换行
+                overflow: 'hidden', // 隐藏溢出的文字
+                textOverflow: 'ellipsis', // 用省略号代替溢出的文字
+                minWidth: '50px', // 确保按钮有最小宽度
+              }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgb(177, 59, 46)'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = selectedCategory === category ? 'rgb(193, 44, 31)' : 'rgb(239, 239, 239)'}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      )}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+        {filteredFiles.map((file, index) => (
           <button
             key={index}
-            onClick={() => handlePlay(file.url, file.label)}
+            onClick={() => handlePlay(file.url)}
             style={{
               margin: '10px',
               padding: '10px 20px',
-              borderRadius: '5px',
-              backgroundColor: currentAudio === file.url ? '#8B0000' : '#F0F0F0',
+              borderRadius: '20px', // 更圆一些
+              backgroundColor: currentAudio === file.url ? 'rgb(193, 44, 31)' : 'rgb(239, 239, 239)',
               color: currentAudio === file.url ? 'white' : 'black',
               border: 'none',
               cursor: 'pointer',
-              flex: '1 1 calc(20% - 20px)',
-              maxWidth: 'calc(20% - 20px)',
-              transition: 'background-color 0.3s, box-shadow 0.3s',
-              boxShadow: currentAudio === file.url ? '0 4px 8px rgba(0, 0, 0, 0.3)' : '0 2px 4px rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+              transition: 'background-color 0.3s, transform 0.3s',
+              transform: currentAudio === file.url ? 'scale(1.05)' : 'scale(1)',
+              whiteSpace: 'nowrap', // 防止文字换行
+              overflow: 'hidden', // 隐藏溢出的文字
+              textOverflow: 'ellipsis', // 用省略号代替溢出的文字
+              minWidth: '50px', // 确保按钮有最小宽度
             }}
-            onMouseEnter={(e) => {
-              if (currentAudio !== file.url) {
-                e.target.style.backgroundColor = '#FF6347';
-                e.target.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (currentAudio !== file.url) {
-                e.target.style.backgroundColor = '#F0F0F0';
-                e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
-              }
-            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = 'rgb(177, 59, 46)'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = currentAudio === file.url ? 'rgb(193, 44, 31)' : 'rgb(239, 239, 239)'}
           >
             {file.label}
           </button>
         ))}
       </div>
       <div style={{ marginTop: '20px' }}>
-        <audio ref={audioRef} controls style={{ width: '100%' }}>
+        <audio ref={audioRef} style={{ width: '100%' }}>
           Your browser does not support the audio element.
         </audio>
       </div>
